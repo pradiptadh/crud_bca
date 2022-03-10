@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>CRUD Petani Kode</title>
+	<title>CRUD Tes Bca</title>
 	<link rel="icon" href="" />
 </head>
 <body>
