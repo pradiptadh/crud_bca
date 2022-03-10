@@ -1,3 +1,2 @@
-# curd-pertanian
-Kode CRUD dalam satu file PHP
-# crud_bca
+# crud-bca
+Kode CRUD dalam satu file Php native
