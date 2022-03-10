@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>CRUD Tes Bca</title>
+	<title>CRUD Tes BCA</title>
 	<link rel="icon" href="" />
 </head>
 <body>
@@ -136,7 +136,9 @@ function ubah($koneksi){
 		if(!empty($id_nasabah) && !empty($nominal) && !empty($jenis) && !empty($tanggal)){
 			$perubahan = "id_nasabah='".$id_nasabah."',nominal=".$nominal.",jenis=".$jenis.",tanggal='".$tanggal."'";
 			$sql_update = "UPDATE transaksi SET ".$perubahan." WHERE id=$id";
+			$sql_update2 = "UPDATE saldo SET ".$id_nasabah." WHERE id = $id_nasabah";
 			$update = mysqli_query($koneksi, $sql_update);
+			$update2 = mysqli_query($koneksi, $sql_update2);
 			if($update && isset($_GET['aksi'])){
 				if($_GET['aksi'] == 'update'){
 					header('location: index.php');
@@ -145,8 +147,14 @@ function ubah($koneksi){
 		} else {
 			$pesan = "Data tidak lengkap!";
 		}
+		if($update2 && isset($_GET['aksi'])){
+			if($_GET['aksi'] == 'update'){
+				header('location: index.php');
+			}
+		}
+	} else {
+		$pesan = "Data tidak lengkap!";
 	}
-	
 	// tampilkan form ubah
 	if(isset($_GET['id'])){
 		?>
