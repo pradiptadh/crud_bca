@@ -60,7 +60,9 @@ function tambah($koneksi){
 function tampil_data($koneksi){
 	$sql = "SELECT * FROM transaksi";
 	$query = mysqli_query($koneksi, $sql);
-	
+	$sql2= "SELECT * FROM saldo";
+	$query2 = mysqli_query($koneksi, $sql2);
+
 	echo "<fieldset>";
 	echo "<legend><h2>Data Transaksi</h2></legend>";
 	
@@ -83,6 +85,33 @@ function tampil_data($koneksi){
 				<td>
 					<a href="index.php?aksi=update&id=<?php echo $data['id_nasabah']; ?>&id_nasabah=<?php echo $data['id_nasabah']; ?>&nominal=<?php echo $data['nominal']; ?>&jenis=<?php echo $data['jenis']; ?>&tanggal=<?php echo $data['tanggal']; ?>">Ubah</a> |
 					<a href="index.php?aksi=delete&id=<?php echo $data['id_nasabah']; ?>">Hapus</a>
+				</td>
+			</tr>
+		<?php
+	}
+	echo "</table>";
+	echo "</fieldset>";
+
+	echo "<fieldset>";
+	echo "<legend><h2>Data Saldo</h2></legend>";
+	
+	echo "<table border='1' cellpadding='10'>";
+	echo "<tr>
+			<th>ID Nasabah</th>
+			<th>Nama</th>
+			<th>Saldo</th>
+			<th>Tindakan</th>
+		  </tr>";
+	
+	while($data = mysqli_fetch_array($query2)){
+		?>
+			<tr>
+				<td><?php echo $data['Id']; ?></td>
+				<td><?php echo $data['nama']; ?></td>
+				<td><?php echo $data['saldo']; ?> </td>			
+		        <td>
+					<a href="index.php?aksi=update&Id=<?php echo $data['Id']; ?>&Id=<?php echo $data['Id']; ?>&nama=<?php echo $data['nama']; ?>&saldo=<?php echo $data['saldo']; ?>">Ubah</a> |
+					<a href="index.php?aksi=delete&Id=<?php echo $data['Id']; ?>">Hapus</a>
 				</td>
 			</tr>
 		<?php
